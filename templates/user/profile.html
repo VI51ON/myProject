@@ -1,0 +1,103 @@
+
+
+
+
+{% extends 'blog/base.html' %}
+{% block title %}Profile | Supreme Security{% endblock %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+      <div class="row">
+        <!-- Latest Posts -->
+        <main class="post blog-post col-lg-8"> 
+          <div class="container">
+            <div class="post-single">
+              <div class="post-thumbnail"><img src="{{ user.profile.image.url }}" alt="..." class="img-fluid"></div>
+              <div class="post-details">
+                <div class="post-meta d-flex justify-content-between">
+                <div class="Category">
+                 
+                </div>
+              </div> 
+                <h1>{{ user.username }}'s Profile<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
+
+                <div class="post-body">
+                  <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Profile Info</legend>
+                        {{ u_form|crispy }}  
+                        {{ p_form|crispy }} 
+                    </fieldset>
+                    <div class="col-4 offset-4 mb-5 mt-5">
+                        <button class="btn btn-secondary" type="submit">Update Profile</button>
+                    </div>
+                  </div>
+                  </form>
+                </div>
+            </div>
+          </div>
+        </main>
+        <aside class="col-lg-4">
+          <!-- Widget [Search Bar Widget]-->
+          <div class="widget search">
+            <header>
+              <h3 class="h6">Search the blog</h3>
+            </header>
+            <form action="{% url 'search' %}" class="search-form">
+              <div class="form-group">
+                <input type="search" name="q" placeholder="What are you looking for?">
+                <button type="submit" class="submit"><i class="icon-search"></i></button>
+              </div>
+            </form>
+          </div>
+          <!-- Widget [Latest Posts Widget]        -->
+          <div class="widget latest-posts">
+            <header>
+              <h3 class="h6">Blog's Latest</h3>
+            </header>
+            <div class="blog-posts">
+              {% for post in most_recent %}
+              <a href="{{ post.get_absolute_url }}">
+                <div class="item d-flex align-items-center">
+                  <div class="image"><img src="{{ post.thumbnail.url }}" alt="..." class="img-fluid"></div>
+                  <div class="title"><strong>{{ post.title }}</strong>
+                    <div class="d-flex align-items-center">
+                      <div class="views"><i class="icon-eye"></i>{{ post.view_count }}</div>
+                      <div class="comments"><i class="icon-comment"></i>{{ post.comment_count}}</div>
+                    </div>
+                  </div>
+                </div>
+                </a>
+                {% endfor %}
+            </div>
+          </div>
+          <!-- Widget [Categories Widget]-->
+          <div class="widget categories">
+            <header>
+              <h3 class="h6">Actions</h3>
+            </header>
+            {% if user.is_staff %}
+            <div class="item d-flex justify-content-between">
+              <a href="{% url 'post-create' %}">Create An Article</a>
+            </div>
+            {% endif %}
+            <div class="item d-flex justify-content-between">
+              <a href="{% url 'change_password' %}">Change Password</a>
+            </div>
+            <div class="item d-flex justify-content-between">
+              <a href="{% url 'donation' %}">Donate Us</a>
+            </div>
+			<div class="item d-flex justify-content-between">
+              <a href="{% url 'logout' %}">Logout</a>
+            </div>
+          
+          </div>
+          <!-- Widget [Tags Cloud Widget]-->
+        </aside>
+      </div>
+    </div>
+    {% endblock content %}

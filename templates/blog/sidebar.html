@@ -1,0 +1,38 @@
+{% load static %}
+
+    <!-- Latest Posts -->
+    <aside class="col-lg-4">
+
+      <!-- Widget [Latest Posts Widget]        -->
+      <div class="widget categories">
+        <header>
+          <h3 class="h6">Our Services</h3>
+        </header>
+        {% for serv in all_services%}
+        <div class="item d-flex justify-content-between"><a href="{{ serv.get_absolute_url }}">{{ serv.service_title }}</a></div>
+        {% endfor %}
+      </div>
+
+
+      <div class="widget latest-posts">
+        <header>
+          <h3 class="h6">Blog's Latest</h3>
+        </header>
+        <div class="blog-posts">
+          {% for post in most_recent %}
+          <a href="{{ post.get_absolute_url }}">
+            <div class="item d-flex align-items-center">
+              <div class="image"><img src="{{ post.thumbnail.url }}" alt="..." class="img-fluid"></div>
+              <div class="title"><strong>{{ post.title }}</strong>
+                <div class="d-flex align-items-center">
+                  <div class="views"><i class="icon-eye"></i>{{ post.view_count }}</div>
+                  <div class="comments"><i class="icon-comment"></i>{{ post.comment_count}}</div>
+                </div>
+              </div>
+            </div>
+            </a>
+            {% endfor %}
+        </div>
+      </div>
+
+    </aside>

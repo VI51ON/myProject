@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+{% block title %}Register | Supreme Security{% endblock %}
+{% load static %}
+
+
+
+{% block content %}
+<br>
+<div class="container">
+    <h2>You have been logged out</h2>
+    
+        <div class="border-top pt-3">
+            <a class="mb-2" href="{% url 'login' %}"><strong>Log In Again</strong></a>
+            </small>
+
+        </div>
+</div>
+
+{% endblock content %}

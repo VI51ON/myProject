@@ -1,0 +1,130 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<style>
+  .carousel-item {
+    height: 65vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+</style>
+
+
+<header>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One - Set the background image for this slide in the line below -->
+      <div class="carousel-item active" style="background-image: url({% static 'img/img3.png' %})">
+        <div class="carousel-caption d-none d-md-block">
+          <h3>For the Full Spectrum in IT Security - Choose us</h3>
+          <p>We are a specialist IT Security Consultancy that works with your business to<br>
+            identify and assess the security posture of your systems and people.</p>
+        </div>
+      </div>
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      
+    </div>
+  </div>
+</header>
+<br><br>
+<!-- Page Content -->
+<div class="container">
+  <h1 class="my-4">SECURITY SPECIALISTS</h1>
+  <div class="row">
+    <div class="col-lg-6">
+      <p style="LINE-HEIGHT:35px">Based in New Zealand, We are a specialist IT Security Consultancy for your business to identify the security posture of your systems and people. Supreme Security is a specialist computer security company with niche technical skills that enable us to provide high quality penetration testing and other IT security services to our clients.
+        Based in New Zealand, we conduct security testing for organisations around the globe, allowing them to rest secured. We are a specialist IT Security Consultancy that works with your business to
+        identify and assess the security posture of your systems and people. We work with small businesses through to large enterprise organisations.</p>
+    </div>
+    <div class="col-lg-6">
+      <img class="img-fluid rounded" src="{% static 'img/home.jpg' %}" alt="">
+    </div>
+  </div>
+  <!-- Marketing Icons Section -->
+  <br>
+  <!-- /.row -->
+<hr>
+  <!-- Portfolio Section -->
+  <h2>We know our stuff</h2><br>
+
+  <div class="row">
+    <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="{% static 'img/planning.jpg' %}" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            Project planning and management
+          </h4>
+          <p class="card-text">Our projects team become the primary point of contact and are responsible for handling scheduling, gathering pre-requisites and managing the delivery of the review.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="{% static 'img/completion.jpg' %}" style="height: 156px;" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            Completion and reporting
+          </h4>
+          <p class="card-text">The technical team will complete the review and produce a set of reports, which will then pass through several stages of technical review and quality assurance.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="{% static 'img/followup.png' %}" style="height: 156px;" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            Follow up
+          </h4>
+          <p class="card-text">Once the report is delivered, our team are available to do a walkthrough of the findings, answer questions, or provide re-testing of any remediation actions.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><br>
+
+  <hr>
+  <h2>Featured Events</h2><br>
+  <div class="row">
+    {% for event in all_events %}
+    <div class="col-lg-4 col-sm-6 portfolio-item">
+      
+      <div class="card h-100">
+        <a href="{{ event.event_link }}"><img class="card-img-top" src="{{ event.image.url }}" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="{{ event.event_link }}">{{ event.event_title }}</a>
+          </h4>
+          <p class="card-text">{{ event.event_overview }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <hr>
+
+  <!-- Call to Action Section -->
+  <div class="row mb-4">
+    <div class="col-md-8">
+      <p>Our firmy understands the subtle differences in IT security testing that companies require, and our engagement team works closely with our clients to generate a set of services that meet those requirements..</p>
+    </div>
+    <div class="col-md-4">
+      <a class="btn btn-lg btn-secondary btn-block" href="/services">Our Services</a>
+    </div>
+  </div>
+
+</div>
+
+    <!-- Hero Section-->
+   
+
+    {% endblock content %}

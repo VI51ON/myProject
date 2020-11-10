@@ -1,0 +1,65 @@
+{% extends 'blog/base.html' %}
+{% block title %}Contact Us | Supreme Security{% endblock %}
+{% load static %}
+
+
+{% block content %}
+
+<!--
+        ==================================================
+            Global Page Section Start
+        ================================================== -->
+<section id="contact-section">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="block">
+                    <h2>Request a call</h2>
+                    <p>
+                        For sales enquiries and any other enquiries please contact us. One of our guys will get in touch with you shortly
+                    </p>
+                    <div class="contact-form">
+                        <form class="contact-form" method="POST" action="/thankyou/">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input name="name" type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input name="email" type="email" class="form-control" id="email" placeholder="Enter your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <textarea rows="1" placeholder="Subject" class="form-control" name="subject" id="subject"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea rows="6" placeholder="Message" class="form-control" name="message" id="message" required></textarea>
+                    </div>
+
+                        <button type="submit" class="btn btn-lg btn-secondary btn-block">submit</button>
+                </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                 <div class="map-area">
+                    <h2>Find Us</h2>
+                    <p>
+                        To find the location of our office located in Auckland, please use the map for any assistance given below. Our offices are open on Mon - Fri from 9 - 5 PM
+
+                    </p>
+                    <div class="map">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.374526370475!2d174.75986261581988!3d-36.857453187700244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d47e88c1b624b%3A0x2704dde970ead64!2s520%20Queen%20Street%2C%20Auckland%20CBD%2C%20Auckland%201010!5e0!3m2!1sen!2snz!4v1595483647459!5m2!1sen!2snz" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

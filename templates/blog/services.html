@@ -1,0 +1,77 @@
+{% extends 'blog/base.html' %}
+{% block title %}Services | Supreme Security{% endblock %}
+{% load static %}
+
+{% block content %}
+
+	    <!-- Hero Section-->
+    <section style="background: url({% static 'img/serv_intro.png' %}); background-size: cover; background-position: center center" class="hero">
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-lg-7">
+            <h1>Our Services are designed to satisfy the needs of every company</h1>
+          </div>
+        </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="container">
+
+        <div class="row">
+       
+          <div class="col-lg-8">  
+            <h2 class="h3">Primary Services</h2>
+            <p class="text-big"><strong>Our Company </strong>works with customers to understand their requirements and are adept at customising an approach to each individual engagement to provide a service that best fits their business needs.</p>
+          </div>
+
+        </div>      
+      </div>
+
+    </section>
+    
+    <div class="container">
+      <div class="row">
+        
+        <!-- Latest Posts -->
+        <main class="posts-listing col-lg-8"> 
+          <div class="container">
+            <div class="row">
+              {% for serv in all_services %}
+              {% if serv.id <= 4 %}
+              <!-- post -->
+              <div class="post col-xl-6">
+                
+                <!--<div class="post-thumbnail"><a href="post.html"><img src="img/blog-post-1.jpeg" alt="..." class="img-fluid"></a></div>-->
+                <a href="{{ serv.get_absolute_url }}"><div class="post-details">
+                  
+                    <style>
+                    .post-details {
+                      border: 3px solid #347deb;
+                      margin-bottom: 15px;
+                      border-radius: 15px;
+                      background: #ebeced00;
+                      padding: 20px 25px; 
+                      } 
+                    </style>
+                    
+                    <h3 class="h4">{{ serv.service_title }}</h3></a>
+                  <p class="text-muted">{{ serv.service_overview }}<a href="{{ serv.get_absolute_url }}"><strong>...read more</strong></a></href></p>
+                  
+                </div>
+                
+              </div>
+                {% endif %} 
+               {% endfor %}		 
+            </div>
+            
+          
+          
+        </main>
+        {% include 'blog/sidebar.html' %}
+      </div>
+  </div> 
+      
+
+    {% endblock content %}

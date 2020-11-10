@@ -1,0 +1,219 @@
+{% extends 'blog/base.html' %}
+{% block title %}About Us | Supreme Security{% endblock %}
+{% load static %}
+
+
+
+{% block content %}
+
+
+<style>
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+/* Display the columns below each other instead of side by side on small screens */
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* Add some shadows to create a card effect */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Some left and right padding inside the container */
+.container {
+  padding: 0 16px;
+}
+
+/* Clear floats */
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+  
+</style>
+
+    <!-- Hero Section-->
+    <section style="background: url({% static 'img/about_us.jpg' %}); background-size: cover; background-position: center center" class="hero">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <h1>Founded in 2020, Supreme Security is a team of more than thirty IT professionals, </h1>
+          </div>
+        </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
+      </div>
+    </section>
+    <!-- Intro Section-->
+    <section class="intro">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <h2 class="h3">About us</h2>
+            <p class="text-big">With offices in <strong>Auckland</strong>. we are well positioned to provide penetration testing and other IT security services to our clients. Understanding the subtle differences in IT security testing that companies require, the team at Supreme Security are experienced in tailoring services to meet the scope and requirements of our customers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- Latest Posts -->
+        <div class="container">
+          <h2>Our Team</h2><br>
+          <div class="row d-flex align-items-stretch">
+          <div class="column">
+            <div class="card">
+              <img src="{% static '' %}" alt="Jane" style="width:100%">
+              <div class="container mt-2">
+                <h2></h2>
+                <p class="title">Junior UI/UX Designer</p>
+                <p>Work with a team of UX designers to ensure any UI design changes help to compliment the overall user experience and journey. Support the Senior UI designer to create mock-ups for use in client pitches</p>
+                <p>Email: <strong><u></u></strong></p>
+              </div>
+            </div>
+          </div>
+        
+          <div class="column">
+            <div class="card">
+              <img src="{% static '' %}" alt="Mike" style="width:100%">
+              <div class="container mt-2">
+                <h2>Kamal Deep</h2>
+                <p class="title">Back-end Administrator</p>
+                <p>Responsible for creating and implementing webapp databases. Determine the best database management system for a particular client, as well as test database programs. </p>
+                <p>Email: <strong><u></u></strong></p>
+              </div>
+            </div>
+          </div>
+        
+          <div class="column">
+            <div class="card">
+              <img src="{% static 'img/mohit.jpg' %}" alt="John" style="width:100%">
+              <div class="container mt-2">
+                <h2></h2>
+                <p class="title">Senior UI/UX Designer</p>
+                <p>Help to create UI design wireframes, mock ups and final designs across all desktop, mobile and tablet devices. Work with the Digital Analytics manager to assess the impact of any UI changes/improvements</p>
+                <p>Email: <strong><u></u></strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+   {% comment %} <section class="featured-posts no-padding-top">
+
+      <div class="container">
+        <!-- Post-->
+        <h2>Latest from the blog</h2>
+        {% for obj in object_list %}
+
+        <div class="row d-flex align-items-stretch">
+          {% if not forloop.first and not forloop.last %}
+          <div class="image col-lg-5"><img src="{{ obj.thumbnail.url }}" alt="..."></div>
+          {% endif %}
+          <div class="text col-lg-7">
+            <div class="text-inner d-flex align-items-center">
+              <div class="content">
+                <header class="post-header">
+                  <div class="category">
+                    {% for cat in obj.categories.all %}
+                    <a href="#">{{ cat }}</a>
+                    {% endfor %}
+                    </div>
+                    <h2 class="h4">{{ obj.title }}</h2></a>
+                </header>
+                <p>{{ obj.overview }}</p>
+                <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                    <div class="avatar"><img src="{{ obj.author.profile_picture.url }}" alt="..." class="img-fluid"></div>
+                    <div class="title"><span>{{ obj.author }}</span></div></a>
+                  <div class="date"><i class="icon-clock"></i>{{ obj.timestamp|timesince }}</div>
+                  <div class="comments"><i class="icon-comment"></i>{{ obj.comment_count }}</div>
+                </footer>
+              </div>
+            </div>
+          </div>
+          {% if forloop.first or forloop.last %}
+          <div class="image col-lg-5"><img src="{{ obj.thumbnail.url }}" alt="..."></div>
+          {% endif %}
+        </div>
+
+        {% endfor %}
+        <!-- Post        -->
+      </div>
+    </section>{% endcomment %}<br><br>
+    <!-- Divider Section-->
+    <section style="background: url({% static 'img/divider-bg.jpg' %}); background-size: cover; background-position: center bottom" class="divider">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <h2>Supreme Security understands the subtle differences in IT security testing that companies require, and our engagement team works closely with our clients to generate a set of services that meet those requirements.</h2><a href="/services" class="hero-link">View More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Latest Posts -->
+    <section class="latest-posts"> 
+      <div class="container">
+        <header> 
+          <h2>Latest from the blog</h2>
+          <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </header>
+        <div class="row">
+          {% for obj in latest %}
+          <div class="post col-md-4">
+            <div class="post-thumbnail"><a href="{{ obj.get_absolute_url }}"><img src="{{ obj.thumbnail.url }}" alt="..." class="img-fluid"></a></div>
+            <div class="post-details">
+              <div class="post-meta d-flex justify-content-between">
+                <div class="date">{{ obj.timestamp }}</div>
+                <div class="category">
+                  {% for cat in obj.categories.all %}
+                  <a href="#">{{ cat }}</a>
+                  {% endfor %}
+                  </div>
+              </div><a href="{{ obj.get_absolute_url }}">
+                <h3 class="h4">{{ obj.title }}</h3></a>
+              <p class="text-muted">{{ obj.overview }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <!-- Newsletter Section-->
+
+    
+
+    
+
+    <!-- Gallery Section-->
+
+   
+
+    {% endblock content %}

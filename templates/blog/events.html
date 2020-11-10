@@ -1,0 +1,46 @@
+{% extends 'blog/base.html' %}
+{% block title %}Events | Supreme Security{% endblock %}
+{% load static %}
+
+{% block content %}
+
+
+<section style="background: url({% static 'img/serv_intro.png' %}); background-size: cover; background-position: center center" class="hero">
+    <div class="container">
+      <div class="row">
+        
+        <div class="col-lg-7">
+          <h1>Upcoming Events</h1>
+        </div>
+      </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
+    </div>
+  </section>
+
+<br><br>
+
+<div class="container">
+    <section class="intro"><p class='text-big'>Supreme Security has a long history of supporting conferences and other events both locally and overseas. Below is the
+        list of events that are upcoming soon.
+    </p></section>
+
+    <div class="row">
+      {% for events in all_events %}
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+        <div class="card h-100">
+          <a href="{{ events.event_link }}"><img class="card-img-top" src="{{ events.image.url }}" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="{{ events.event_link }}">{{ events.event_title }}</a>
+            </h4>
+            <p class="card-text">{{ events.event_overview }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+</div>
+<br><br>
+
+
+
+{% endblock content %}

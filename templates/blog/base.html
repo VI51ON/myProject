@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+    {% include "blog/head.html" %}
+    <title>{% block title %}TechBots{% endblock %}</title>
+<body>
+    
+    {% include "blog/header.html" %}
+
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% block content %}
+    {% endblock content %}
+
+    {% include "blog/footer.html" %}
+    {% include "blog/scripts.html" %}
+
+</body>
+
+</html>

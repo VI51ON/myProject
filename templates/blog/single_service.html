@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% block title %} Services | {{ details.service_title }}{% endblock %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+      <div class="row">
+        <!-- Latest Posts -->
+        <main class="post blog-post col-lg-8"> 
+          <div class="container">
+            <div class="post-single">
+              {{ details.content | safe }}
+            </div>
+            <h2>Ready to learn more?</h2><br>
+          </div>
+          
+          <div class="col-md-4">
+            <a class="btn btn-lg btn-secondary btn-block" href="/contact_us">Contact Us</a>
+          </div>
+        </main>
+     {% include 'blog/sidebar.html' %}
+      </div>
+    </div>
+
+{% endblock content %}
